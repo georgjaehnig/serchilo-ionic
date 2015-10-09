@@ -1,6 +1,7 @@
+
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $http) {
+.controller('DashCtrl', function($scope, $http, $ionicPopup) {
 
   $scope.submitQuery = function(form) {
 
@@ -8,14 +9,22 @@ angular.module('starter.controllers', [])
     json_url += encodeURIComponent(form.query);
 
     $http.get(json_url).then(function(response) {
-      console.log(response);
       json = response.data;
       if (json.status.found) {
         url = json.url.final;
         cordova.InAppBrowser.open(url, '_system');
       }
+      else {
+        $ionicPopup.alert({
+          title: 'Error',
+          template: 'None of the available shortcuts matched your query.'
+        });
+      }
     }, function(error) {
-      // TODO
+      $ionicPopup.alert({
+        title: 'Error',
+        template: 'Could not access www.findfind.it.'
+      });
     });
   };
 
