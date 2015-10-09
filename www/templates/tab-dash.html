@@ -1,14 +1,11 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
     <form ng-submit="submitQuery(form)">
-      <div>
-      <label class="item item-input">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input type="search" placeholder="Enter keyword (and arguments)" autofocus ng-model="form.query">
-      </label>
-      </div>
-      <div class="padding">
-        <button type="submit" class="button button-positive">Go</button>
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="Enter keyword (and arguments)" autofocus ng-model="form.query">
+        </label>
+        <button class="button button-positive">Go</button>
       </div>
     </form>
   </ion-content>
