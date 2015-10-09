@@ -1,9 +1,22 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('DashCtrl', function($scope, $http) {
 
   $scope.submitQuery = function(form) {
-    cordova.InAppBrowser.open('http://maps.google.com', '_system');
+
+    json_url = 'https://www.findfind.it/api/u/admin?query=';
+    json_url += encodeURIComponent(form.query);
+
+    $http.get(json_url).then(function(response) {
+      console.log(response);
+      json = response.data;
+      if (json.status.found) {
+        url = json.url.final;
+        cordova.InAppBrowser.open(url, '_system');
+      }
+    }, function(error) {
+      // TODO
+    });
   };
 
 })
