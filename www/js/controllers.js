@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope) {
 
   $scope.submitQuery = function(form) {
-    alert(form.query);
+    cordova.InAppBrowser.open('http://maps.google.com', '_system');
   };
 
 })
