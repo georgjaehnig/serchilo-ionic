@@ -50,8 +50,12 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
+
   $scope.settings = {
-    enableFriends: true
+    enableFriends: true,
+    username: window.localStorage['username'] || '',
+    language_namespace: window.localStorage['language_namespace'] || 'en',
+    country_namespace: window.localStorage['country_namespace'] || 'deu'
   };
 
 
