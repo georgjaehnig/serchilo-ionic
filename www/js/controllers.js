@@ -53,4 +53,8 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+
+  $scope.foobar = function() {
+    alert(1);
+  }
 });
