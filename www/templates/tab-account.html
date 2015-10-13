@@ -1,9 +1,24 @@
 <ion-view view-title="Account">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
+        <ion-toggle ng-model="settings.enableFriends" ng-change="foobar()">
+            Enable Friends
+        </ion-toggle>
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="settings.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Language Namespace</span>
+          <select ng-disabled="settings.username">
+            <option selected>Default</option>
+            <option >Green</option>
+            <option>Red</option>
+          </select>
+        </label>
     </ion-list>
   </ion-content>
 </ion-view>
+
+
+
