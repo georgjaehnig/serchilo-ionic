@@ -7,12 +7,10 @@
         <label class="item item-input">
           <span class="input-label">Username</span>
           <input type="text" ng-model="settings.username" ng-change="saveSetting('username', settings.username)">
+          <p class="item-text-wrap">
+            If given, all settings are taken from the user account online.
+          </p>
         </label>
-        <div ng-hide="!settings.username">
-          <label class="item">
-            If a username is given, all settings are taken from the user account online.
-          </label>
-        </div>
         <div ng-hide="settings.username">
           <label class="item item-input item-select">
             <div class="input-label">Language Namespace</div>
