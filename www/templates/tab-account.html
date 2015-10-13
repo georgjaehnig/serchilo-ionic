@@ -9,7 +9,7 @@
           </p>
         </label>
         <div ng-hide="settings.username">
-          <label class="item item-input item-select">
+          <label class="item item-input item-select item-stacked-label">
             <div class="input-label">Language Namespace</div>
             <select ng-model="settings.language_namespace" ng-change="saveSetting('language_namespace', settings.language_namespace)">
 <option value="aa">Afar (aa)</option>
@@ -192,7 +192,7 @@
           </label>
         </div>
         <div ng-hide="settings.username">
-          <label class="item item-input item-select">
+          <label class="item item-input item-select item-stacked-label">
             <div class="input-label">Country Namespace</div>
             <select ng-model="settings.country_namespace" ng-change="saveSetting('country_namespace', settings.country_namespace)">
 <option value="abw">Aruba (abw)</option>
