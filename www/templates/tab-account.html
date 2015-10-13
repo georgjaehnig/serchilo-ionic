@@ -452,6 +452,19 @@
             </select>
           </label>
         </div>
+        <div ng-hide="settings.username">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Custom namespaces</span>
+            <input type="text" ng-model="settings.custom_namespaces" ng-change="saveSetting('custom_namespaces', settings.custom_namespaces)">
+            <p> Separate with a dot.  </p>
+          </label>
+        </div>
+        <div ng-hide="settings.username">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Default keyword</span>
+            <input type="text" ng-model="settings.default_keyword" ng-change="saveSetting('default_keyword', settings.default_keyword)">
+          </label>
+        </div>
     </ion-list>
   </ion-content>
 </ion-view>

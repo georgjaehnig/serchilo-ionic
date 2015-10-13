@@ -53,9 +53,11 @@ angular.module('starter.controllers', [])
 
   $scope.settings = {
     enableFriends: true,
-    username: window.localStorage['username'] || '',
-    language_namespace: window.localStorage['language_namespace'] || 'en',
-    country_namespace: window.localStorage['country_namespace'] || 'deu'
+    username           : window.localStorage['username'] || '',
+    language_namespace : window.localStorage['language_namespace'] || 'en',
+    country_namespace  : window.localStorage['country_namespace'] || 'deu',
+    custom_namespaces  : window.localStorage['custom_namespaces'] || '',
+    default_keyword    : window.localStorage['default_keyword'] || '',
   };
 
 
