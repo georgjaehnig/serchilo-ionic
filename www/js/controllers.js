@@ -54,7 +54,8 @@ angular.module('starter.controllers', [])
     enableFriends: true
   };
 
-  $scope.foobar = function() {
-    alert(1);
+
+  $scope.saveSetting = function(key, value) {
+    window.localStorage[key] = value;
   }
 });
