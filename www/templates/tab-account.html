@@ -6,16 +6,23 @@
         </ion-toggle>
         <label class="item item-input">
           <span class="input-label">Username</span>
-          <input type="text" ng-model="settings.username">
+          <input type="text" ng-model="settings.username" ng-change="saveSetting('username', settings.username)">
         </label>
-        <label class="item item-input">
-          <span class="input-label">Language Namespace</span>
-          <select ng-disabled="settings.username">
-            <option selected>Default</option>
-            <option >Green</option>
-            <option>Red</option>
-          </select>
-        </label>
+        <div ng-hide="!settings.username">
+          <label class="item">
+            If a username is given, all settings are taken from the user account online.
+          </label>
+        </div>
+        <div ng-hide="settings.username">
+          <label  class="item item-input item-select">
+            <span class="input-label">Language Namespace</span>
+            <select>
+              <option selected>Default</option>
+              <option >Green</option>
+              <option>Red</option>
+            </select>
+          </label>
+        </div>
     </ion-list>
   </ion-content>
 </ion-view>
