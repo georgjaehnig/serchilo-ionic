@@ -13,9 +13,29 @@ angular.module('starter.controllers', [])
 
   $scope.submitQuery = function(form) {
 
-    json_url = 'https://www.findfind.it/api/u/admin?query=';
+    // Build API URL.
+    json_url = 'https://www.findfind.it/api/';
+
+    if (window.localStorage['username']) {
+     json_url += 'u/' + window.localStorage['username'] + '?';
+    }
+    else {
+     json_url += 'n/' + 
+      window.localStorage['language_namespace'] +
+      '.' +
+      window.localStorage['country_namespace'];
+      if (window.localStorage['custom_namespaces']) {
+        json_url += '.' + window.localStorage['custom_namespaces'];
+      }
+      json_url += '?'
+      if (window.localStorage['default_keyword']) {
+        json_url += 'default_keyword=' + window.localStorage['default_keyword'] + '&';
+      }
+    }
+    json_url += 'query=';
     json_url += encodeURIComponent(form.query);
 
+    // Fetch data from API.
     $http.get(json_url).then(function(response) {
       json = response.data;
       if (json.status.found) {
