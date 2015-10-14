@@ -20,6 +20,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+
+    // Save default settings:
+    window.localStorage['username']           = window.localStorage['username']           || '';
+    window.localStorage['language_namespace'] = window.localStorage['language_namespace'] || 'en';
+    window.localStorage['country_namespace']  = window.localStorage['country_namespace']  || 'deu';
+    window.localStorage['custom_namespaces']  = window.localStorage['custom_namespaces']  || '';
+    window.localStorage['default_keyword']    = window.localStorage['default_keyword']    || '';
   });
 })
 
