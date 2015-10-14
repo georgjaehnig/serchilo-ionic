@@ -20,9 +20,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
-    if (!cordova.plugins.Keyboard.isVisible) {
-      cordova.plugins.Keyboard.show();
-    }
   });
 })
 
