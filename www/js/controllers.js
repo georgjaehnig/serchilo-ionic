@@ -41,11 +41,11 @@ angular.module('starter.controllers', [])
 .controller('AccountCtrl', function($scope) {
 
   $scope.settings = {
-    username           : window.localStorage['username'] || '',
-    language_namespace : window.localStorage['language_namespace'] || 'en',
-    country_namespace  : window.localStorage['country_namespace'] || 'deu',
-    custom_namespaces  : window.localStorage['custom_namespaces'] || '',
-    default_keyword    : window.localStorage['default_keyword'] || '',
+    username           : window.localStorage['username'],
+    language_namespace : window.localStorage['language_namespace'],
+    country_namespace  : window.localStorage['country_namespace'],
+    custom_namespaces  : window.localStorage['custom_namespaces'],
+    default_keyword    : window.localStorage['default_keyword']
   };
 
 
