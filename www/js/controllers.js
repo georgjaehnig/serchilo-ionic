@@ -33,6 +33,13 @@ angular.module('starter.controllers', [])
       }
     }
     json_url += 'query=';
+
+    if ((!form) || (!form.query)) {
+      $ionicPopup.alert({
+        title: 'Error',
+        template: 'No query entered.'
+      });
+    }
     json_url += encodeURIComponent(form.query);
 
     // Fetch data from API.
