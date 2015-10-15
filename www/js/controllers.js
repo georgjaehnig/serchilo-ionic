@@ -1,15 +1,40 @@
 
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $http, $ionicPopup) {
+.controller('DashCtrl', function($scope, $http, $ionicPopup, $compile) {
 
-  $scope.$on('$ionicView.afterEnter', function() {
+  setFocusOnQuery = function() {
     document.getElementById('query-input').focus();
     if (!cordova.plugins.Keyboard.isVisible) {
       cordova.plugins.Keyboard.show();
     }
+  }
+
+  addRecentKeywordButton = function(keyword) {
+    recentKeywordButton = document.createElement('button');
+    recentKeywordButton.setAttribute('id', 'recent-keyword-' + keyword);
+    recentKeywordButton.setAttribute('class', 'button');
+    recentKeywordButton.setAttribute('ng-click', "setKeyword('" + keyword + "')");
+    recentKeywordButton.innerHTML = keyword;
+    $compile(recentKeywordButton)($scope);
+    document.getElementById('recent-keywords').appendChild(recentKeywordButton);
+  }
+
+  extractKeywordFromQuery = function(query) {
+    var keywordAndArguments = query.split(' ', 2);
+    var keyword = keywordAndArguments[0];
+    return keyword; 
+  }
+
+  $scope.$on('$ionicView.afterEnter', function() {
+    setFocusOnQuery();
   });
 
+
+  $scope.setKeyword = function(keyword) {
+    document.getElementById('query-input').value = keyword + ' ';
+    setFocusOnQuery();
+  }
 
   $scope.submitQuery = function(form) {
 
@@ -46,6 +71,14 @@ angular.module('starter.controllers', [])
     $http.get(json_url).then(function(response) {
       json = response.data;
       if (json.status.found) {
+
+        // Remember keyword.
+        keyword = extractKeywordFromQuery(form.query);
+        if (keyword) {
+          addRecentKeywordButton(keyword);
+        }
+
+        // Send out final URL.
         url = json.url.final;
         cordova.InAppBrowser.open(url, '_system');
       }
