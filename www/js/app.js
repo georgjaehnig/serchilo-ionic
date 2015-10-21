@@ -27,6 +27,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     window.localStorage['country_namespace']  = window.localStorage['country_namespace']  || 'deu';
     window.localStorage['custom_namespaces']  = window.localStorage['custom_namespaces']  || '';
     window.localStorage['default_keyword']    = window.localStorage['default_keyword']    || '';
+    window.localStorage['recent_keywords']    = window.localStorage['recent_keywords']    || 'g w yt gm a';
   });
 })
 

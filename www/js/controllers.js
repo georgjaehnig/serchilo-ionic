@@ -1,3 +1,10 @@
+function uniques(arr) {
+    var a = [];
+    for (var i=0, l=arr.length; i<l; i++)
+        if (a.indexOf(arr[i]) === -1 && arr[i] !== '')
+            a.push(arr[i]);
+    return a;
+}
 
 angular.module('starter.controllers', [])
 
@@ -19,6 +26,37 @@ angular.module('starter.controllers', [])
     $compile(recentKeywordButton)($scope);
     document.getElementById('recent-keywords').appendChild(recentKeywordButton);
   }
+
+  updateRecentKeywordButtons = function() {
+
+    // Clear button area.
+    document.getElementById('recent-keywords').innerHTML = '';
+
+    // Get array of recent keywords.
+    var recent_keywords = window.localStorage['recent_keywords'].split(' ');
+
+    // Get out if none given.
+    if (recent_keywords.length == 0) {
+      return; 
+    }
+
+    // Remove duplicates.
+    recent_keywords = uniques(recent_keywords);
+
+    // Limit to 5.
+    recent_keywords = recent_keywords.slice(0,5);
+
+
+    // Add the buttons.
+    for (var i=0; i<recent_keywords.length; i++) {
+      addRecentKeywordButton(recent_keywords[i]);
+    }
+
+    // Save current keywords.
+    window.localStorage['recent_keywords'] = recent_keywords.join(' ');
+  }
+
+  updateRecentKeywordButtons();
 
   extractKeywordFromQuery = function(query) {
     var keywordAndArguments = query.split(' ', 2);
@@ -75,7 +113,8 @@ angular.module('starter.controllers', [])
         // Remember keyword.
         keyword = extractKeywordFromQuery(form.query);
         if (keyword) {
-          addRecentKeywordButton(keyword);
+          window.localStorage['recent_keywords'] = keyword + ' ' + window.localStorage['recent_keywords'];
+          updateRecentKeywordButtons();
         }
 
         // Send out final URL.
